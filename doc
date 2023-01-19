@@ -1,0 +1,102 @@
+Experimente agor...
+Desafio Vaga Dev 2023
+Felipe Freire <recrutamento@sharenergy.com.br>
+Você
+Olá Robson,
+
+Seguem as instruções para a próxima etapa do processo seletivo da vaga DEV Back-End Jr. da Sharenergy!
+
+A próxima fase consiste em um desafio no qual o objetivo é avaliar as suas habilidades como desenvolvedor e sua capacidade de resolução de problemas. O pull request com a sua solução do desafio deve ser feito até o prazo limite de entrega, às 23:59 horas do dia 20/01/2023, em uma sexta-feira.
+
+Clicando no botão abaixo você encontrará o repositório do Github com todas as instruções para você arrebentar no desafio. Não se esqueça de postar um breve vídeo com a explicação de sua solução!
+Começar Desafio
+Então, mãos à obra e boa sorte!
+
+Abraços,
+
+
+Equipe da Sharenergy
+
+
+31 3236 1585
+
+recrutamento@sharenergy.com.br
+
+https://sharenergy.com.br/
+
+Av. do Contorno, 2905, Santa Efigênia, Belo Horizonte – MG
+
+facebook	
+linkedin	
+instagram	
+Descadastrar para não receber mais os nossos emails. | Tendo problemas para ler esse email? Clique aqui.
+
+
+
+
+
+
+
+
+
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend_shary-energy
+    build: ./frontend
+    volumes:
+      - ./frontend/src:/app-frontend/src
+    ports:
+      - 3000:3000
+    platform: linux/x86_64
+    working_dir: /app-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "lsof", "-t", "-i:3000" ]
+      timeout: 10s
+      retries: 5
+
+  backend:
+    container_name: shary-energy-backend
+    build: ./backend
+    ports:
+      - 3001:3001
+    platform: linux/x86_64
+    working_dir: /app-backend
+    networks:
+      - shary-energy-networks
+    volumes:
+      - ./backend/src:/app-backend/src
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      - APP_PORT=3001
+      - JWT_SECRET=jwt_secret
+      - DB_USER=root
+      - DB_PASS=password
+      - DB_HOST=db
+      - DB_PORT=3306
+    healthcheck:
+      test: [ "CMD", "lsof", "-t", "-i:3001" ]
+      timeout: 10s
+      retries: 5
+  mongodb:
+    image: mongo:4.0
+    container_name: shary-energy-db
+    volumes:
+      - ./:/app
+    restart: always
+    ports:
+      # Garanta que não haverá conflitos de porta com um mongodb que esteja
+      # rodando localmente
+      - 27017:27017
+
+# Lista de redes que os containeres irão utilizar
+networks:
+  shary-energy-networks:
+    name: shary-energy-networks
+

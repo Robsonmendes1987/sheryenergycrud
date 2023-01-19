@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend_shery
+    build: ./frontend
+    volumes:
+      - ./frontend/src:/app-frontend/src
+    ports:
+      - 5173:5173
+    platform: linux/x86_64
+    networks:
+      - shary-energy-networks
+    working_dir: /app-frontend
+    depends_on:
+      - backend
+
+
+  backend:
+    container_name: shary-energy-backend
+    build: ./backend
+    platform: linux/x86_64
+    working_dir: /app-backend
+    ports:
+      - 3002:3001
+    networks:
+      - shary-energy-networks
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:4.4.6
+    container_name: shary-energy-db
+    restart: always
+    networks:
+      - shary-energy-networks
+    ports:
+      - 27017:27017
+
+networks:
+  shary-energy-networks:
+    name: shary-energy-networks
