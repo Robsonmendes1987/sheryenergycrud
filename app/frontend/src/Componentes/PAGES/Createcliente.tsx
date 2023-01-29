@@ -36,6 +36,17 @@ export function CreateCliente() {
   }
 
   return (
+    <main
+    className="bg-gray-100"
+    style={{
+      // display: "flex",
+      // alignItems: "center",
+      // justifyContent: "center",
+      // height: "3ch",
+      width: "100%"
+    }}
+    >
+
     <Box
       sx={{ width: "100%" }}
       style={{
@@ -131,12 +142,13 @@ export function CreateCliente() {
               }}
             >
               <Button variant="contained" type="submit" sx={{ width: "50%" }}>
-                Cadastrar
+                register
               </Button>
             </div>
           </form>
         </FormControl>
       </Grid>
     </Box>
+              </main>
   );
 }

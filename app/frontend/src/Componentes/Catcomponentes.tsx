@@ -25,7 +25,16 @@ export function Cats() {
   };
 
   return (
-    <main>
+    <main
+    className="bg-neutral-300"
+    style={{
+      // display: "flex",
+      // alignItems: "center",
+      // justifyContent: "center",
+      height: "110ch",
+      width: "100%"
+    }}
+    >
     <Box
       style={{
         display: "flex",
@@ -54,7 +63,7 @@ export function Cats() {
       }}
       >
       <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
-      <Button variant="contained" onClick={()=> {navigate('/clientes')}} >Page CLIENTES</Button>
+      <Button variant="contained" onClick={()=> {navigate('/clients')}} >Page CLIENTES</Button>
       <Button variant="contained" onClick={()=> {navigate('/usuarios')}} >Page LISTA USUARIOS</Button>
       </Grid>
 <div

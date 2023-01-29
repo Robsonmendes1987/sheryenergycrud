@@ -64,7 +64,7 @@ export function Users() {
         <Button
           variant="contained"
           onClick={() => {
-            navigate("/clientes");
+            navigate("/clients");
           }}
         >
           {" "}

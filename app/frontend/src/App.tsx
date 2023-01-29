@@ -19,7 +19,7 @@ function App() {
         <Route element={<Login/>}  path="/" />
         {/* <Route  element={<HeaderMain/>}  path="/clientes" /> */}
         <Route element={<Users/>} path="/usuarios" />
-        <Route element={<UserBackApi/>} path="/clientes" />
+        <Route element={<UserBackApi/>} path="/clients" />
         <Route element={<EditCliente/>} path="/edit/:id" />
        
         <Route element={<Cats/>} path="/cats" />

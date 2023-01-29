@@ -94,6 +94,16 @@ export function UserBackApi() {
   }
 
   return (
+    <main
+    className="bg-violet-200"
+    style={{
+      // display: "flex",
+      // alignItems: "center",
+      // justifyContent: "center",
+      height: "83ch",
+      width: "100%"
+    }}
+    >
     <Box
       sx={{ width: "100%" }}
       style={{
@@ -104,6 +114,16 @@ export function UserBackApi() {
     >
        
       <TableContainer component={Paper}>
+      <main
+    className="bg-gray-100"
+    style={{
+      // display: "flex",
+      // alignItems: "center",
+      // justifyContent: "center",
+      height: "83ch",
+      width: "100%"
+    }}
+    >
       <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
       <Button variant="contained" onClick={()=> {navigate('/usuarios')}} > Page usuarios</Button>
       <Button variant="contained" onClick={()=> {navigate('/cats')}} >Page Error Cats</Button>
@@ -111,7 +131,7 @@ export function UserBackApi() {
       // sx={{ width: "100ch", height: "35ch" }}
        style={{
         display: "flex",
-        // alignItems: "center",
+        alignItems: "center",
         justifyContent: "center",
         height: "33ch",
         width: "90%"
@@ -144,7 +164,7 @@ export function UserBackApi() {
                 <StyledTableCell align="right">{element.cpf}</StyledTableCell>
                 <div>
                   <Link to={{ pathname: `/edit/${element._id}` }}>
-                    <Button variant="outlined">Editar</Button>
+                    <Button variant="outlined">Edit</Button>
                   </Link>
                 </div>
                 <div>
@@ -159,41 +179,9 @@ export function UserBackApi() {
             ))}
           </TableBody>
         </Table>
+        </main>
       </TableContainer>
     </Box>
+    </main>
   );
 }
-
-// CLIENTES
-//       <CreateCliente />
-//       {/* <Link to="/cats">CATS</Link>
-//       <Link to="/dogs">DOGS</Link>
-//       <Link to="/usuarios">LISTA USUARIOS</Link> */}
-//       <div>
-//         {state.map((element, index) => (
-//           <div key={index}>
-//             <p>Name{element.name}</p>
-//             <p>Phone: {element.telefone}</p>
-//             <p>Email:{element.email}</p>
-//             <p>CPF: {element.cpf}</p>
-//             <div>
-//               <Link to={{ pathname: `/edit/${element._id}` }}>
-//                 <Button variant="outlined">Editar</Button>
-//               </Link>
-//             </div>
-//             <div>
-//               <IconButton
-//                 aria-label="delete"
-//                 onClick={() => deletUser(element._id)}
-//               >
-//                 <DeleteIcon />
-//               </IconButton>
-//             </div>
-//             {/* <p>City{element.address[0].city}</p>
-//           <p>Address: {element.address[0].district}</p>
-//           <p>Sate: {element.address[0].state}</p>
-//           <p>Street: {element.address[0].street}</p>
-//           <p>Number: {element.address[0].number}</p> */}
-//           </div>
-//         ))}
-//       </div>

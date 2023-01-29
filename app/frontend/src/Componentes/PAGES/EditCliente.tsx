@@ -76,7 +76,15 @@ export function EditCliente() {
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <FormControl sx={{ width: "100ch", height: "35ch" }}>
             <form onSubmit={handleSubmit(handleSubmitPut)}>
-              <div>
+              <div className="form-control">
+              <div
+              className="form-control"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            > 
               <Grid
               className="form-control"
                 xs={0}
@@ -97,6 +105,15 @@ export function EditCliente() {
                   type="text"
                 />
               </Grid>
+              </div>
+              <div
+              className="form-control"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            > 
 
               <Grid
               className="form-control"
@@ -118,9 +135,18 @@ export function EditCliente() {
                   type="number"
                 />
               </Grid>
+              </div>
 
               {/* </div > */}
               {/* <div className="form-control"> */}
+              <div
+              className="form-control"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            > 
               <Grid
               className="form-control"
                 xs={0}
@@ -141,9 +167,18 @@ export function EditCliente() {
                   type="text"
                 />
               </Grid>
+              </div>
 
               {/* </div> */}
               {/* <div className="form-control"> */}
+              <div
+              className="form-control"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            > 
               <Grid
               className="form-control"
                 xs={0}
@@ -164,6 +199,7 @@ export function EditCliente() {
                   type="text"
                 />
               </Grid>
+              </div>
               
 
               <Grid
@@ -177,10 +213,10 @@ export function EditCliente() {
                 <Button
                   sx={{ width: "50ch" }}
                   variant="contained"
-                  type="button"
-                  onClick={() => history("/")}
+                  type="submit"
+                  onClick={() => history("/clients")}
                 >
-                  Salvar Alteraçôes
+                  save changes
                 </Button>
               </Grid>
               </div>

@@ -73,7 +73,7 @@ export function Dogs() {
         <Button
           variant="contained"
           onClick={() => {
-            navigate("/clientes");
+            navigate("/clients");
           }}
           >
          Page CLIENTES
