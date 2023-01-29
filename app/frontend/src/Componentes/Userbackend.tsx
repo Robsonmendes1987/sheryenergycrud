@@ -105,8 +105,8 @@ export function UserBackApi() {
        
       <TableContainer component={Paper}>
       <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
-      <Button variant="contained" onClick={()=> {navigate('/clientes')}} > Page CLIENTES</Button>
-      <Button variant="contained" onClick={()=> {navigate('/usuarios')}} >Page Error Cats</Button>
+      <Button variant="contained" onClick={()=> {navigate('/usuarios')}} > Page usuarios</Button>
+      <Button variant="contained" onClick={()=> {navigate('/cats')}} >Page Error Cats</Button>
       <Grid 
       // sx={{ width: "100ch", height: "35ch" }}
        style={{

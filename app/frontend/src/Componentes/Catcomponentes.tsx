@@ -27,39 +27,58 @@ export function Cats() {
   return (
     <Box
       style={{
-        // display: "flex",
+        display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        height: "60ch",
+        height: "70ch",
 
       }}
     >
-     
-      <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
-      <Button variant="contained" onClick={()=> {navigate('/clientes')}} >Page CLIENTES</Button>
-      <Button variant="contained" onClick={()=> {navigate('/usuarios')}} >Page LISTA USUARIOS</Button>
-      Cats
-      <Grid 
+
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}   style={{
+        display: "flex",
+        // alignItems: "center",
+        justifyContent: "center",
+        // height: "50ch",
+        width: "90%"
+      }}>
+       <Grid 
       // sx={{ width: "100ch", height: "35ch" }}
        style={{
         display: "flex",
         // alignItems: "center",
         justifyContent: "center",
+        height: "5ch",
+        width: "90%"
+      }}
+      >
+      <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
+      <Button variant="contained" onClick={()=> {navigate('/clientes')}} >Page CLIENTES</Button>
+      <Button variant="contained" onClick={()=> {navigate('/usuarios')}} >Page LISTA USUARIOS</Button>
+      </Grid>
+<div
+className="bg-orange-400"
+   style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "4ch",
+    width: "28%"
+  }}
+>
+      Choose the error and click
+      </div>
+
+      <Grid 
+      // sx={{ width: "100ch", height: "35ch" }}
+       style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         height: "60ch",
         width: "90%"
       }}
       >
-        <div>
-          <button
-          
-          onClick={() => {
-            const count = nextpages > 1 ? nextpages + 1: nextpages
-            henddleclick(count)
-            setNextPages(count)
-
-          }}
-          >NEXT</button>
-        </div >
         <Grid container rowSpacing={1} 
         style={{
         display: "flex",
@@ -104,9 +123,6 @@ export function Cats() {
           </Button>
           </div>
         ))}
-        </Grid>
-        </Grid>
-        </Grid>
       {show && (
         <div
         className="text-[20px]"
@@ -138,6 +154,10 @@ export function Cats() {
           </Grid>
         </div>
       )}
+        </Grid>
+        </Grid>
+        </Grid>
+        </Grid>
     </Box>
   );
 }
