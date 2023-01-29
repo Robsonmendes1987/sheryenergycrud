@@ -6,9 +6,7 @@ class User {
     private userName: string;
 
     constructor(
-        // id: string | undefined,
-        // password: string ,
-        // userName?: string,
+
         user: IUser
     ){
         this.id = user.id;

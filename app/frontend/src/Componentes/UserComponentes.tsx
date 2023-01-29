@@ -1,3 +1,17 @@
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  ImageList,
+  ImageListItem,
+  Table,
+  TablePagination,
+} from "@mui/material";
+
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -18,19 +32,27 @@ export function Users() {
   const { users, allUsers } = useContext(AppContext);
 
   const nextPage = async (value: number) => {
-    const qualquer = await allUsers(value);
-    setPage(qualquer);
+    const getUser = await allUsers(value);
+    setPage(getUser);
   };
   useEffect(() => {
     nextPage(1);
   }, []);
 
   return (
-    <main>
-      <Link to="/cats">CATS</Link>
-      <Link to="/dogs">DOGS</Link>
-      <Link to="/clientes">CLIENTES</Link>
-      <button
+    <Box>
+      <Grid
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Link to="/cats">Error CATS</Link>
+        <Link to="/dogs">Images DOGS</Link>
+        <Link to="/clientes">Registration of CLIENTES</Link>
+      </Grid>
+      <Button
+        variant="outlined"
         onClick={() => {
           const count = next > 1 ? next - 1 : next;
           nextPage(count);
@@ -38,32 +60,45 @@ export function Users() {
         }}
       >
         Previous
-      </button>
-      <button
+      </Button>
+
+      <Button
+        variant="outlined"
         onClick={() => {
           const count = next + 1;
           nextPage(count);
           setNext(count);
         }}
       >
+        {" "}
         Next
-      </button>
+      </Button>
 
       {page?.map((user, index) => (
-        <div key={index}>
-          <p>{user.age}</p>
-          <p>{user.email}</p>
-          <p>{user.username}</p>
-          <p>{user.name}</p>
-          <img src={user.picture} />
-          {/* "street": "Rua de cosme",
+        <CardContent>
+          <Card variant="outlined">
+            {
+              <div key={index}>
+                <img src={user.picture} />
+                <Table>
+                  <p>Age: {user.age}</p>
+                </Table>
+
+                <p>Emai: {user.email}</p>
+                <p>UserName: {user.username}</p>
+                <p>Name: {user.name}</p>
+                {/* "street": "Rua de cosme",
       "district": "Belvedere",
       "number": "32",
       "city": "Paulo Camilo",
       "state": "LAsos",
       "_id": "63c93afa2c93989b1c5b6133" */}
-        </div>
+              </div>
+            }
+          </Card>
+        </CardContent>
       ))}
-    </main>
+      {/* </ImageList> */}
+    </Box>
   );
 }

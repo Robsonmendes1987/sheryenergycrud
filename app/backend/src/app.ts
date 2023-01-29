@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost:27017')
     App.use(cors());
     App.use(routers)
     App.get('/', (req, res) => res.status(200).send('OK'))
-    App.listen(3001, () => {console.log('rodando na porta 3001')})
+    App.listen(3003, () => {console.log('rodando na porta 3003')})
  })
 .catch(() => console.log('falha ao conectar no banco'))
 

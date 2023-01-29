@@ -17,7 +17,8 @@ import { IuserBack } from "../helpers/interfaces/apibackend";
 //     return api.data
 // }
 
+
  export const  api =  axios.create({
-    baseURL: 'http://localhost:3001/'
-})
+     baseURL: 'http://localhost:3003/'
+    })
 
