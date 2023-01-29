@@ -24,23 +24,43 @@ export function Dogs() {
 
   return (
     <main
-    className="bg-orange-200"
+    className="bg-orange-600"
+    style={{
+      // display: "flex",
+      // alignItems: "center",
+      // justifyContent: "center",
+      height: "100ch",
+      // width: "100%"
+    }}
     >
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}   style={{
+      // display: "flex",
+      // alignItems: "center",
+      justifyContent: "center",
+      // height: "50ch",
+      // width: "90%"
+    }}>
       <Box
          sx={{ width: "100%" }}
          style={{
-           display: "flex",
+          //  display: "flex",
            alignItems: "center",
            justifyContent: "center",
+        width: "80%"
+
          }}
       >
         
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}> 
-      <Grid
-        style={{
-          // display: "flex",
-          justifyContent: "space-between",
-        }}
+      
+         <Grid 
+      // sx={{ width: "100ch", height: "35ch" }}
+       style={{
+        display: "flex",
+        // alignItems: "center",
+        justifyContent: "center",
+        height: "5ch",
+        width: "90%"
+      }}
       >
       <Button
           variant="contained"
@@ -48,46 +68,50 @@ export function Dogs() {
             navigate("/cats");
           }}
         >
-          CATS
+         Page CATS
         </Button>
         <Button
           variant="contained"
           onClick={() => {
             navigate("/clientes");
           }}
-        >
-          CLIENTES
+          >
+         Page CLIENTES
         </Button>
         <Button
           variant="contained"
           onClick={() => {
             navigate("/usuarios");
           }}
-        >
-          LISTA USUARIOS
+          >
+         Page LISTA USUARIOS
         </Button>
-        </Grid>
+          </Grid>
 
-      <Grid
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+          {/* <Grid 
+      // sx={{ width: "100ch", height: "35ch" }}
+       style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "60ch",
+        width: "90%"
+      }}
+      > */}
         
       
-      </Grid>
       <Button
         color="success"
         onClick={async () => {
           await handleclick();
         }}
-      >
+        >
         Click Here for more Dogs
       </Button>{" "}
       <img src={dog} />
-      </Grid>
+        {/* </Grid> */}
       </Box>
+      </Grid>
     </main>
   );
 }

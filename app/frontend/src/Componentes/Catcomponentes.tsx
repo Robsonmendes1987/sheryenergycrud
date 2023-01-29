@@ -25,6 +25,7 @@ export function Cats() {
   };
 
   return (
+    <main>
     <Box
       style={{
         display: "flex",
@@ -36,11 +37,11 @@ export function Cats() {
     >
 
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}   style={{
-        display: "flex",
+        // display: "flex",
         // alignItems: "center",
         justifyContent: "center",
         // height: "50ch",
-        width: "90%"
+        // width: "90%"
       }}>
        <Grid 
       // sx={{ width: "100ch", height: "35ch" }}
@@ -63,7 +64,7 @@ className="bg-orange-400"
     alignItems: "center",
     justifyContent: "center",
     height: "4ch",
-    width: "28%"
+    width: "30%"
   }}
 >
       Choose the error and click
@@ -159,5 +160,6 @@ className="bg-orange-400"
         </Grid>
         </Grid>
     </Box>
+    </main>
   );
 }
