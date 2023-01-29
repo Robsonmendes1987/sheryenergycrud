@@ -1,7 +1,7 @@
 import { Box, Button, createTheme, Grid } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { number } from "yup";
 import { possibleHTTPArray } from "../helpers/statushttp";
 
@@ -16,6 +16,8 @@ export function Cats() {
   const [errorCode, seterrorCode] = useState(possibleHTTPArray);
   const [nextpages, setNextPages] = useState(1);
   const [currintPage, setCurrientePage] = useState(0);
+
+  const navigate = useNavigate()
 
   const henddleclick = (data: number) => {
     setCats(`https://http.cat/${data}`);
@@ -33,10 +35,9 @@ export function Cats() {
       }}
     >
      
-      <Link to="/dogs">DOGS</Link>
-      <Link to="/clientes">CLIENTES</Link>
-      <Link to="/usuarios">LISTA USUARIOS</Link>
-      {/* <Link to="/">LOGIN</Link> */}
+      <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
+      <Button variant="contained" onClick={()=> {navigate('/clientes')}} >Page CLIENTES</Button>
+      <Button variant="contained" onClick={()=> {navigate('/usuarios')}} >Page LISTA USUARIOS</Button>
       Cats
       <Grid 
       // sx={{ width: "100ch", height: "35ch" }}

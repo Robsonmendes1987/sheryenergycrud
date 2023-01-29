@@ -22,7 +22,7 @@ export function UserProvider({ children }: UserContextProps) {
   const [users, setUsers] = useState<Iusers[]>([]);
 
   const allUsers = async (value: number = 1): Promise<Iusers[]> => {
-    const result = await getUser(`&page=${value}&results=10&seed=abc`);
+    const result = await getUser(`&page=${value}&results=8&seed=abc`);
     return result
   };
 

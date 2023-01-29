@@ -1,10 +1,13 @@
 import { Button, Grid } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getDog from "../services/dogapi";
 
 export function Dogs() {
   const [dog, setDog] = useState("");
+
+  const navigate = useNavigate()
 
   const handleclick = async () => {
     const nextDog = await getDog();
@@ -20,26 +23,71 @@ export function Dogs() {
   }, []);
 
   return (
-    <main>
-       <Grid
+    <main
+    className="bg-orange-200"
+    >
+      <Box
+         sx={{ width: "100%" }}
+         style={{
+           display: "flex",
+           alignItems: "center",
+           justifyContent: "center",
+         }}
+      >
+        
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}> 
+      <Grid
+        style={{
+          // display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+      <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/cats");
+          }}
+        >
+          CATS
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/clientes");
+          }}
+        >
+          CLIENTES
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/usuarios");
+          }}
+        >
+          LISTA USUARIOS
+        </Button>
+        </Grid>
+
+      <Grid
         style={{
           display: "flex",
           justifyContent: "space-between",
         }}
       >
-      <Link to="/cats">Error CATS</Link>
-      <Link to="/clientes">CLIENTES</Link>
-      <Link to="/usuarios">Registration of CLIENTES</Link>
+        
+      
       </Grid>
       <Button
-      color="success"
+        color="success"
         onClick={async () => {
           await handleclick();
         }}
       >
-        Click Here
+        Click Here for more Dogs
       </Button>{" "}
       <img src={dog} />
+      </Grid>
+      </Box>
     </main>
   );
 }

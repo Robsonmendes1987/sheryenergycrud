@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
+  Grid,
   IconButton,
   styled,
   Table,
@@ -37,6 +39,7 @@ interface IuserBack {
 export function UserBackApi() {
   const [state, setState] = useState<IuserBack[]>([]);
   const { register, handleSubmit, reset } = useForm({});
+  const navigate = useNavigate()
 
   const getUserBackend = async () => {
     const result = await api.get("/cliente");
@@ -99,8 +102,24 @@ export function UserBackApi() {
         justifyContent: "center",
       }}
     >
+       
       <TableContainer component={Paper}>
+      <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
+      <Button variant="contained" onClick={()=> {navigate('/clientes')}} > Page CLIENTES</Button>
+      <Button variant="contained" onClick={()=> {navigate('/usuarios')}} >Page Error Cats</Button>
+      <Grid 
+      // sx={{ width: "100ch", height: "35ch" }}
+       style={{
+        display: "flex",
+        // alignItems: "center",
+        justifyContent: "center",
+        height: "33ch",
+        width: "90%"
+      }}
+      >
         <CreateCliente />
+        </Grid>
+        
 
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>

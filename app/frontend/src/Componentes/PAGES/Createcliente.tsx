@@ -45,7 +45,7 @@ export function CreateCliente() {
       }}
     >
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <FormControl sx={{ width: "100ch" }}>
+        <FormControl sx={{ width: "100ch"}}>
           <form onSubmit={handleSubmit(handleSubmitPost)}>
             <div
               className="form-control"

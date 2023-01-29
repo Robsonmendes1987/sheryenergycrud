@@ -14,7 +14,7 @@ import {
 
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/UserProvider";
 import userApi from "../services/userapi";
 
@@ -30,6 +30,7 @@ export function Users() {
   const [page, setPage] = useState<IPages[]>();
   const [next, setNext] = useState(1);
   const { users, allUsers } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const nextPage = async (value: number) => {
     const getUser = await allUsers(value);
@@ -40,16 +41,43 @@ export function Users() {
   }, []);
 
   return (
+    <main
+    className="bg-neutral-400"
+    >
     <Box>
       <Grid
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "10ch",
         }}
       >
-        <Link to="/cats">Error CATS</Link>
-        <Link to="/dogs">Images DOGS</Link>
-        <Link to="/clientes">Registration of CLIENTES</Link>
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/dogs");
+          }}
+        >
+          Page DOGS
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/clientes");
+          }}
+        >
+          {" "}
+          Page CLIENTES
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate("/cats");
+          }}
+        >
+          Page Error Cats
+        </Button>
       </Grid>
       <Button
         variant="outlined"
@@ -73,32 +101,58 @@ export function Users() {
         {" "}
         Next
       </Button>
+      <Grid
+        style={{
+          display: "flex",
 
-      {page?.map((user, index) => (
-        <CardContent>
-          <Card variant="outlined">
-            {
-              <div key={index}>
-                <img src={user.picture} />
-                <Table>
-                  <p>Age: {user.age}</p>
-                </Table>
+          height: "80ch",
+          width: "100%",
+        }}
+      >
+        <Grid
+          container
+          xs={0}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Grid
+            container
+            xs={0}
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {page?.map((user, index) => (
+              <div >
+                <CardContent>
+                  <Card
+                    variant="outlined"
+                    sx={{ width: "20ch", height: "28ch" }}
+                  >
+                    {
+                      <div key={index}  className="bg-green-100">
+                        <img src={user.picture} />
+                        <Table>
+                          <p>Age: {user.age}</p>
+                        </Table>
 
-                <p>Emai: {user.email}</p>
-                <p>UserName: {user.username}</p>
-                <p>Name: {user.name}</p>
-                {/* "street": "Rua de cosme",
-      "district": "Belvedere",
-      "number": "32",
-      "city": "Paulo Camilo",
-      "state": "LAsos",
-      "_id": "63c93afa2c93989b1c5b6133" */}
+                        <p>Emai: {user.email}</p>
+                        <p>UserName: {user.username}</p>
+                        <p>Name: {user.name}</p>
+                      </div>
+                    }
+                  </Card>
+                </CardContent>
               </div>
-            }
-          </Card>
-        </CardContent>
-      ))}
-      {/* </ImageList> */}
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
     </Box>
+    </main>
   );
 }
