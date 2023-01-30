@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 import { FieldValues, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -27,26 +26,40 @@ interface IuserBack {
     state: string;
   };
 }
-
+// type FormValues = {
+//   name: string;
+//   telefone: number;
+//   email: string;
+//   cpf: string;
+//   id: string;
+//   data: string;
+// };
 export function EditCliente() {
   const [list, setDelet] = useState<IuserBack[]>([]);
-  const [create, setCreate] = useState<any>();
+  const [create, setCreate] = useState<IuserBack>();
   const [state, setState] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
   const { id } = useParams();
   const history = useNavigate();
 
-  const getUserBackend = async (id: string) => {
-    const result = await api.get(`cliente/${id}`);
-    console.log("TESTE", result.data[0]);
+  const getUserBackend = async (_id: string) => {
+    const result = await api.get(`cliente/${_id}`);
 
     reset(result.data[0]);
   };
-  const handleSubmitPut = async (_id: string, data: any) => {
-    await api.put(`/cliente/${_id}`, data);
-    setCreate(list);
 
-    // setCreate( result );
+  // const handleSubmitPost = async (data: string) => {
+  //   await api.post("cliente", data);
+  //   setCreate(list.filter((del) => del._id !== data));
+  //   reset();
+  // };
+  const handleSubmitPut = async (
+    _id: string,
+    data: string
+  ): Promise<FormValues> => {
+    await api.put(`/cliente/${_id}`, data);
+    setCreate(create);
+    console.log("TESTE", setCreate);
   };
   function handlechange(e: any): void {
     setState(e.target.value);
@@ -77,148 +90,145 @@ export function EditCliente() {
           <FormControl sx={{ width: "100ch", height: "35ch" }}>
             <form onSubmit={handleSubmit(handleSubmitPut)}>
               <div className="form-control">
-              <div
-              className="form-control"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            > 
-              <Grid
-              className="form-control"
-                xs={0}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <TextField
-                  sx={{ width: "50ch" }}
-                  id="standard-name"
-                  label="Name"
-                  onChange={(e) => handlechange(e)}
-                  value={state}
-                  variant="filled"
-                  {...register("name")}
-                  type="text"
-                />
-              </Grid>
-              </div>
-              <div
-              className="form-control"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            > 
-
-              <Grid
-              className="form-control"
-                xs={0}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <TextField
-                  sx={{ width: "50ch" }}
-                  id="outlined-telefone"
-                  label="telefone"
-                  onChange={(e) => handlechange(e)}
-                  value={state}
-                  variant="filled"
-                  {...register("telefone")}
-                  type="number"
-                />
-              </Grid>
-              </div>
-
-              {/* </div > */}
-              {/* <div className="form-control"> */}
-              <div
-              className="form-control"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            > 
-              <Grid
-              className="form-control"
-                xs={0}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <TextField
-                  sx={{ width: "50ch" }}
-                  id="outlined-email"
-                  label="Email"
-                  onChange={(e) => handlechange(e)}
-                  value={state}
-                  variant="filled"
-                  {...register("email")}
-                  type="text"
-                />
-              </Grid>
-              </div>
-
-              {/* </div> */}
-              {/* <div className="form-control"> */}
-              <div
-              className="form-control"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            > 
-              <Grid
-              className="form-control"
-                xs={0}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <TextField
-                  sx={{ width: "50ch" }}
-                  id="outlined-cpf"
-                  label="Cpf"
-                  onChange={(e) => handlechange(e)}
-                  value={state}
-                  variant="filled"
-                  {...register("cpf")}
-                  type="text"
-                />
-              </Grid>
-              </div>
-              
-
-              <Grid
-              className="form-control"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Button
-                  sx={{ width: "50ch" }}
-                  variant="contained"
-                  type="submit"
-                  onClick={() => history("/clients")}
+                <div
+                  className="form-control"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                 >
-                  save changes
-                </Button>
-              </Grid>
+                  <Grid
+                    className="form-control"
+                    // xs={0}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <TextField
+                      className="form-control"
+                      sx={{ width: "50ch" }}
+                      id="standard-name"
+                      label="Name"
+                      value={state}
+                      variant="filled"
+                      {...register("name")}
+                      type="text"
+                      onChange={(e) => handlechange(e)}
+                    />
+                  </Grid>
+                </div>
+                <div
+                  className="form-control"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Grid
+                    className="form-control"
+                    // xs={0}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <TextField
+                      className="form-control"
+                      sx={{ width: "50ch" }}
+                      id="outlined-telefone"
+                      label="telefone"
+                      value={state}
+                      variant="filled"
+                      {...register("telefone")}
+                      onChange={(e) => handlechange(e)}
+                      type="number"
+                    />
+                  </Grid>
+                </div>
+                <div
+                  className="form-control"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Grid
+                    className="form-control"
+                    // xs={0}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <TextField
+                      className="form-control"
+                      sx={{ width: "50ch" }}
+                      id="outlined-email"
+                      label="Email"
+                      value={state}
+                      variant="filled"
+                      {...register("email")}
+                      onChange={(e) => handlechange(e)}
+                      type="text"
+                    />
+                  </Grid>
+                </div>
+                <div
+                  className="form-control"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Grid
+                    className="form-control"
+                    // xs={0}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <TextField
+                      className="form-control"
+                      sx={{ width: "50ch" }}
+                      id="outlined-cpf"
+                      label="Cpf"
+                      value={state}
+                      variant="filled"
+                      {...register("cpf")}
+                      onChange={(e) => handlechange(e)}
+                      type="text"
+                    />
+                  </Grid>
+                </div>
+
+                <Grid
+                  className="form-control"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Button
+                    className="form-control"
+                    sx={{ width: "50ch" }}
+                    variant="contained"
+                    type="button"
+                    onClick={() => history("/clients")}
+                  >
+                    save changes
+                  </Button>
+                </Grid>
               </div>
             </form>
           </FormControl>

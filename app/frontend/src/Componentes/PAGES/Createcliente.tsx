@@ -70,10 +70,10 @@ export function CreateCliente() {
                 sx={{ width: "50ch" }}
                 id="standard-name"
                 label="Name"
-                onChange={(e) => handlechange(e)}
                 value={cpf}
                 variant="filled"
                 {...register("name")}
+                onChange={(e) => handlechange(e)}
                 type="text"
               />
             </div>
@@ -89,10 +89,10 @@ export function CreateCliente() {
                 sx={{ width: "50ch" }}
                 id="outlined-telefone"
                 label="Phone"
-                onChange={(e) => handlechange(e)}
                 value={cpf}
                 variant="filled"
                 {...register("telefone")}
+                onChange={(e) => handlechange(e)}
                 type="number"
               />
             </div>
@@ -108,10 +108,10 @@ export function CreateCliente() {
                 sx={{ width: "50ch" }}
                 id="outlined-email"
                 label="Email"
-                onChange={(e) => handlechange(e)}
                 value={cpf}
                 variant="filled"
                 {...register("email")}
+                onChange={(e) => handlechange(e)}
                 type="text"
               />
             </div>
@@ -127,10 +127,10 @@ export function CreateCliente() {
                 sx={{ width: "50ch" }}
                 id="outlined-cpf"
                 label="Cpf"
-                onChange={(e) => handlechange(e)}
                 value={cpf}
                 variant="filled"
                 {...register("cpf")}
+                onChange={(e) => handlechange(e)}
                 type="number"
               />
             </div>

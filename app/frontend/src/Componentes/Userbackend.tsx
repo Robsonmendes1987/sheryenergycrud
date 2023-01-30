@@ -65,7 +65,6 @@ export function UserBackApi() {
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
       color: theme.palette.common.white,
-      // padding: 10,
       width: 1000,
       flexDirection: "column",
     },
@@ -97,9 +96,6 @@ export function UserBackApi() {
     <main
     className="bg-violet-200"
     style={{
-      // display: "flex",
-      // alignItems: "center",
-      // justifyContent: "center",
       height: "83ch",
       width: "100%"
     }}
@@ -117,9 +113,6 @@ export function UserBackApi() {
       <main
     className="bg-gray-100"
     style={{
-      // display: "flex",
-      // alignItems: "center",
-      // justifyContent: "center",
       height: "83ch",
       width: "100%"
     }}
@@ -128,7 +121,7 @@ export function UserBackApi() {
       <Button variant="contained" onClick={()=> {navigate('/usuarios')}} > Page usuarios</Button>
       <Button variant="contained" onClick={()=> {navigate('/cats')}} >Page Error Cats</Button>
       <Grid 
-      // sx={{ width: "100ch", height: "35ch" }}
+
        style={{
         display: "flex",
         alignItems: "center",
@@ -145,7 +138,7 @@ export function UserBackApi() {
           <TableHead>
             <TableRow>
               <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell align="right">Telefone </StyledTableCell>
+              <StyledTableCell align="right">Phone </StyledTableCell>
               <StyledTableCell align="right">Email</StyledTableCell>
               <StyledTableCell align="right">Cpf</StyledTableCell>
             </TableRow>
@@ -156,25 +149,22 @@ export function UserBackApi() {
                 <StyledTableCell component="th" scope="row">
                   {element.name}
                 </StyledTableCell>
-                {/* <StyledTableCell align="right">{element.name}</StyledTableCell> */}
                 <StyledTableCell align="right">
                   {element.telefone}
                 </StyledTableCell>
                 <StyledTableCell align="right">{element.email}</StyledTableCell>
                 <StyledTableCell align="right">{element.cpf}</StyledTableCell>
-                <div>
-                  <Link to={{ pathname: `/edit/${element._id}` }}>
-                    <Button variant="outlined">Edit</Button>
-                  </Link>
-                </div>
-                <div>
+
+                    <Button
+                    onClick={() => navigate(`/edit/${element._id}`)}
+                    variant="outlined">Edit</Button>
+         
                   <IconButton
                     aria-label="delete"
                     onClick={() => deletUser(element._id)}
                   >
                     <DeleteIcon />
                   </IconButton>
-                </div>
               </StyledTableRow>
             ))}
           </TableBody>
