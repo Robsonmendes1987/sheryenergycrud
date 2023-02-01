@@ -7,7 +7,7 @@ interface IClaient  {
     email: string,
     telefone: number,
     cpf: string,
-    address: object,
+    // address: object,
 }
 
 export default IClaient

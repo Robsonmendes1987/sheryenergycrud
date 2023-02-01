@@ -5,7 +5,7 @@ class Client {
     private email: string;
     private telefone: number;
     private cpf: string;
-    private address: object;
+    // private address: object;
 
     constructor(
         id: string  | undefined,
@@ -13,7 +13,7 @@ class Client {
         email: string,
         telefone: number,
         cpf: string,
-        address: object,
+        // address: object,
 
     ) {
         this.id = id,
@@ -21,20 +21,20 @@ class Client {
         this.name = name,
         this.telefone = telefone,
         this.cpf = cpf
-        this.address = address
+        // this.address = address
     }
 
     public setId (id: string) {
         this.id = id;
     }
     
-    public setaddress (address: object) {
-        this.address = address;
-    }
+    // public setaddress (address: object) {
+    //     this.address = address;
+    // }
 
-    public getaddress () {
-        return this.name;
-    }
+    // public getaddress () {
+    //     return this.name;
+    // }
 
     public setname (name: string) {
         this.name = name;

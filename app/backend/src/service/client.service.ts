@@ -4,7 +4,7 @@ import CLientDomian from '../Domian/CLient'
 
 class createCliente {
     private freame = new ClientModel()
-    private newCliente(client: IClaient | null): CLientDomian | null{
+    public newCliente(client: IClaient | null): CLientDomian | null{
         if(client) {
             return new CLientDomian(
                 client.id,
@@ -12,7 +12,7 @@ class createCliente {
                 client.email,
                 client.telefone,
                 client.cpf,
-                client.address,
+                // client.address,
             )
         }
        return null
@@ -20,18 +20,25 @@ class createCliente {
 
     public async crateCLiente(cliente: IClaient){
         const newcliente = await this.freame.createCliente(cliente)
-        return {type: 200, message: this.newCliente(newcliente)}
+        return {type: 201, message: this.newCliente(newcliente)}
     }
 
     public async readOne(_id: string){
         const freame = await this.freame.readOne(_id)
-        return {type: 200, message: freame}
+        
+        return {type: 201, message: freame}
     }
 
     public async updateCliente(_id:  string, cliente: IClaient){
-      await  this.readOne(_id)
       const freame = await this.freame.updateCliente(_id, cliente)
-        return {type: 201, message: ({freame})}
+      if (freame === 'Invalid MongoId') {
+        return { type: 422, message: 'Invalid mongo id' };
+      }
+      if (!freame) {
+        return { type: 404, message: 'CLiente not found' };
+      }
+      const result = this.newCliente(freame)
+        return {type: null, message: (result)}
     }
 
     public async deleteCliente(_id: string){
@@ -46,7 +53,9 @@ class createCliente {
 
     public async getOneClient(_id: string){
         const freame = await this.freame.getOneCliente(_id)
-        return {type: 200, message: (freame)}
+        const result = this.newCliente(freame)
+        console.log('BACEND', result)
+        return {type: 200, message: (result)}
     }
 }
 

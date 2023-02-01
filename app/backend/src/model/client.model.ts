@@ -12,13 +12,13 @@ class ClientCreate {
             email: {type: String, required: true},
             telefone:{type: Number, required: true},
             cpf: {type: String, required: true},
-            address: [{
-                street: {type: String, required: true},
-                district: {type: String, required: true},
-                number: {type: String, required: true},
-                city: {type: String, required: true},
-                state: {type: String, required: true},
-            }]
+            // address: {
+            //     street: {type: String, required: true},
+            //     district: {type: String, required: true},
+            //     number: {type: String, required: true},
+            //     city: {type: String, required: true},
+            //     state: {type: String, required: true},
+            // }
         });
         this.model = models.Client || model('Client', this.schema)
     }
@@ -26,18 +26,20 @@ class ClientCreate {
         return this.model.create({...cliente})
     }
 
-    public async updateCliente(_id: string, cliente:Partial<IClient>): Promise<IClient | null> {
-        if(! isValidObjectId(_id)) throw Error('Invalid MongoId')
+    public async updateCliente(_id: string, cliente:Partial<IClient>): Promise<any> {
+        // if(! isValidObjectId(_id)){
+        //   return 'Invalid MongoId';
+        // }
         return this.model.findByIdAndUpdate(
         {_id},
-        {...cliente} as UpdateQuery<IClient>,
+        {...cliente},
         {new: true}
         )
     }
 
     public async readOne(_id: string): Promise<IClient | null>{
         if(! isValidObjectId(_id)) throw Error('Invalid MongoId');
-        return this.model.findOne({_id})
+        return this.model.findById({_id})
     }
 
     public async deletCliente(_id: string): Promise<IClient | null>{

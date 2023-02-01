@@ -14,8 +14,8 @@ class createCliente {
     }
 
    public async createClient(){
-    const {type, message} = await this.service.crateCLiente(this.req.body)
 
+    const {type, message} = await this.service.crateCLiente(this.req.body)
     return this.res.status(type).json(message)
 
     }
@@ -32,16 +32,24 @@ class createCliente {
     }
 
     public async updateCLiente(){
+    console.log('CONTROLLER')
+
         const {type, message} = await this.service.updateCliente(this.req.params.id, this.req.body)
-      return  this.res.status(type).json(message)
+        if (type) {
+            return this.res.status(type).json({ message });
+          }
+       this.res.status(201).json(message)
     }
 
     public async getAllCliente(){
+        console.log('CLIENTES')
+
         const {type, message} = await this.service.getAllClient()
         this.res.status(type).json(message)
     } 
     public async getOneCliente(){
-        const {type, message} = await this.service.deleteCliente(this.req.params.id)
+        console.log('CLIENTE ID')
+        const {type, message} = await this.service.getOneClient(this.req.params.id)
 
         this.res.status(type).json(message)
     }
