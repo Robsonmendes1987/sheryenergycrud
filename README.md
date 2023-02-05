@@ -34,7 +34,7 @@ Para conseguir executar os comandos do abaixo também é necessário que seu sis
 ### 1 - Clone o repositório:
 
 
-git clone git@github.com:robsonmendes1987/Todolist.git
+git clone git@github.com:Robsonmendes1987/sheryenergycrud.git
 
 
 ### 2 - Na raíz do projeto, entre na pasta app e suba os containers do frontend (`frontend_shery`), do backend (`shary-energy-backend`) e o banco de dados (`shary-energy-db`) com o comando:
