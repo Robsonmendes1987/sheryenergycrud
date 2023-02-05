@@ -1,8 +1,8 @@
-# Cadastro de Clientes
+# Controle de dados de Clientes
 
 ## 📡 Objetivo
 
-Essa é uma aplicaçao fullstack de Cadastro de clientes e consumo de APIS, o objetivo é o usuário após A validaçao, poder interagir com  3 apis em paginas diferentes e tambem poder cadastrar atualizar e excluir clientes do banco de dados.
+Essa é uma aplicaçao fullstack de Cadastro de clientes e consumo de APIS, o objetivo é o usuário após A validaçao, poder interagir com  3 apis em paginas diferentes e tambem poder cadastrar atualizar e excluir clientes do banco de dados em uma pagina especifica.
 
 <br />
 
@@ -19,6 +19,7 @@ Essa é uma aplicaçao fullstack de Cadastro de clientes e consumo de APIS, o ob
 - Material UI
 - Tailwindcss
 - React Router Dom
+- Axios
 
 ## 🚀 Instalação e execução
 
