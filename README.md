@@ -92,7 +92,7 @@ Para parar os containers, na pasta raiz do projeto execute o comando:
 </details>
 
 <details>
-  <summary><strong>DELETE /newtodo/:id</strong></summary>
+  <summary><strong>DELETE /cliente/:id</strong></summary>
   <br/ >
 
 • Deleta um cliente pelo id.
@@ -100,7 +100,7 @@ Para parar os containers, na pasta raiz do projeto execute o comando:
 </details>
 
 <details>
-  <summary><strong>PUT /newtodo/:id</strong></summary>
+  <summary><strong>PUT /cliente/:id</strong></summary>
   <br/ >
 
 • Edita um cliente pelo id.
