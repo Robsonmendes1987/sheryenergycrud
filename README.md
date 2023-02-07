@@ -1,8 +1,8 @@
-# Todo List
+# Controle de dados de Clientes
 
 ## 📡 Objetivo
 
-Essa é uma aplicaçao fullstack de Todo list, o objetivo é o usuário após fazer cadastro e validaçao, criar uma lista de tarefas.
+Essa é uma aplicaçao fullstack de Cadastro de clientes e consumo de APIS, o objetivo é o usuário após A validaçao, poder interagir com  3 apis em paginas diferentes e tambem poder cadastrar atualizar e excluir clientes do banco de dados em uma pagina especifica.
 
 <br />
 
@@ -10,14 +10,16 @@ Essa é uma aplicaçao fullstack de Todo list, o objetivo é o usuário após fa
 
 - Node.js
 - Express.js
-- Sequelize.js
-- MySQL
+- MongoDB
+- Mongoose
 - Json Web Tokens
 - Docker
 - Docker Compose
-- React
+- React COntext API
 - Material UI
+- Tailwindcss
 - React Router Dom
+- Axios
 
 ## 🚀 Instalação e execução
 
@@ -32,18 +34,18 @@ Para conseguir executar os comandos do abaixo também é necessário que seu sis
 ### 1 - Clone o repositório:
 
 
-git clone git@github.com:robsonmendes1987/Todolist.git
+git clone git@github.com:Robsonmendes1987/sheryenergycrud.git
 
 
-### 2 - Na raíz do projeto, entre na pasta app e suba os containers do frontend (`frontend_todo`), do backend (`backend_todo`) e o banco de dados (`todo-list-db`) com o comando:
+### 2 - Na raíz do projeto, entre na pasta app e suba os containers do frontend (`frontend_shery`), do backend (`shary-energy-backend`) e o banco de dados (`shary-energy-db`) com o comando:
 
     docker-compose up -d --build
 
 Os containers estão mapeados nas seguintes portas:
 
-- frontend_todo: 3000
-- backend_todo: 3001
-- todo-list-db: 3002
+- frontend_shery: 5173
+- backend_todo: 3002
+- todo-list-db: 27017
 
 Para parar os containers, na pasta raiz do projeto execute o comando:
 
@@ -51,76 +53,57 @@ Para parar os containers, na pasta raiz do projeto execute o comando:
     
 ### 3 - Acesse a aplicação:
 
-    localhost:3000 
+    localhost:3003 
 
 </details>
 <br />
 
 ## 🔎 Rotas
 
-### User
+### Client
 
 <details>
-  <summary><strong>POST /user/register</strong></summary>
+  <summary><strong>POST /register</strong></summary>
   <br/ >
 
-• Cadastra um novo usuário pelo email e senha.
+• Valida o  usuário pelo userEmail e password.
 
 </details>
 
 <br />
 
-### Login
+
+### NewCliente
 
 <details>
-  <summary><strong>POST /login</strong></summary>
+  <summary><strong>POST /cliente</strong></summary>
   <br/ >
 
-• Faz o login pelo email e senha.
-
-</details>
-
-<br />
-
-### Newtodo
-
-<details>
-  <summary><strong>POST /newtodo</strong></summary>
-  <br/ >
-
-• Cria uma nova tarefa.
+• Cadastra um novo cliente no banco.
 
 </details>
 
 <details>
-  <summary><strong>GET /newtodo</strong></summary>
+  <summary><strong>GET /cleinte</strong></summary>
   <br/ >
 
-• Traz todas as tarefas
+• Traz todas os clientes
 
 </details>
 
 <details>
-  <summary><strong>GET /newtodo/:id</strong></summary>
+  <summary><strong>DELETE /cliente/:id</strong></summary>
   <br/ >
 
-• Traz uma tarefa pelo id.
+• Deleta um cliente pelo id.
 
 </details>
 
 <details>
-  <summary><strong>DELETE /newtodo/:id</strong></summary>
+  <summary><strong>PUT /cliente/:id</strong></summary>
   <br/ >
 
-• Deleta uma tarefa pelo id.
-
-</details>
-
-<details>
-  <summary><strong>PUT /newtodo/:id</strong></summary>
-  <br/ >
-
-• Edita uma tarefa pelo id.
+• Edita um cliente pelo id.
 
 </details>
 
