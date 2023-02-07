@@ -8,8 +8,8 @@ interface IUser extends IUserPassword {
 }
 
 export interface IUserToken {
+    id?: string ,
     userName: string,
-    id: string ,
 }
 
 export default IUser;

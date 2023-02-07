@@ -17,8 +17,8 @@ class userCreate {
         return this.model.create({ ...user})
     }
 
-    public async findUser(_id: string){
-        return this.model.findOne({_id});
+    public async findUser(userName: string, password: string): Promise<IUser | null>{
+        return this.model.findOne({userName, password});
     }
 
 
