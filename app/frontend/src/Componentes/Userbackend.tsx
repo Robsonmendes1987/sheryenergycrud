@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -39,7 +39,7 @@ interface IuserBack {
 export function UserBackApi() {
   const [state, setState] = useState<IuserBack[]>([]);
   const { register, handleSubmit, reset } = useForm({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getUserBackend = async () => {
     const result = await api.get("/cliente");
@@ -49,12 +49,6 @@ export function UserBackApi() {
   const deletUser = async (id: string) => {
     await api.delete(`/cliente/${id}`);
     setState(state.filter((del) => del._id !== id));
-  };
-
-  const handleSubmitEdit = async (data: string) => {
-    await api.put("cliente", data);
-    setState(state.filter((del) => del._id !== data));
-    reset();
   };
 
   useEffect(() => {
@@ -77,7 +71,6 @@ export function UserBackApi() {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     "&:last-child td, &:last-child th": {
       border: 0,
     },
@@ -94,84 +87,106 @@ export function UserBackApi() {
 
   return (
     <main
-    className="bg-violet-200"
-    style={{
-      height: "83ch",
-      width: "100%"
-    }}
-    >
-    <Box
-      sx={{ width: "100%" }}
+      className="bg-violet-200"
       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        height: "83ch",
+        width: "100%",
       }}
     >
-       
-      <TableContainer component={Paper}>
-      <main
-    className="bg-gray-100"
-    style={{
-      height: "83ch",
-      width: "100%"
-    }}
-    >
-      <Button variant="contained" onClick={()=> {navigate('/dogs')}} >Page DOGS</Button>
-      <Button variant="contained" onClick={()=> {navigate('/usuarios')}} > Page usuarios</Button>
-      <Button variant="contained" onClick={()=> {navigate('/cats')}} >Page Error Cats</Button>
-      <Grid 
-
-       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "33ch",
-        width: "90%"
-      }}
+      <Box
+        sx={{ width: "100%" }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        <CreateCliente />
-        </Grid>
-        
+        <TableContainer component={Paper}>
+          <main
+            className="bg-gray-100"
+            style={{
+              height: "83ch",
+              width: "100%",
+            }}
+          >
+            <Button
+              variant="contained"
+              onClick={() => {
+                navigate("/dogs");
+              }}
+            >
+              Page DOGS
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                navigate("/usuarios");
+              }}
+            >
+              {" "}
+              Page usuarios
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                navigate("/cats");
+              }}
+            >
+              Page Error Cats
+            </Button>
+            <Grid
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "33ch",
+                width: "90%",
+              }}
+            >
+              <CreateCliente />
+            </Grid>
 
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell align="right">Phone </StyledTableCell>
-              <StyledTableCell align="right">Email</StyledTableCell>
-              <StyledTableCell align="right">Cpf</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {state.map((element, index) => (
-              <StyledTableRow key={index}>
-                <StyledTableCell component="th" scope="row">
-                  {element.name}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {element.telefone}
-                </StyledTableCell>
-                <StyledTableCell align="right">{element.email}</StyledTableCell>
-                <StyledTableCell align="right">{element.cpf}</StyledTableCell>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Name</StyledTableCell>
+                  <StyledTableCell align="right">Phone </StyledTableCell>
+                  <StyledTableCell align="right">Email</StyledTableCell>
+                  <StyledTableCell align="right">Cpf</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {state.map((element, index) => (
+                  <StyledTableRow key={index}>
+                    <StyledTableCell component="th" scope="row">
+                      {element.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {element.telefone}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {element.email}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {element.cpf}
+                    </StyledTableCell>
 
-                    <Button
-                    onClick={() => navigate(`/edit/${element._id}`)}
-                    variant="outlined">Edit</Button>
-         
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => deletUser(element._id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-        </main>
-      </TableContainer>
-    </Box>
+                    <Link to={{ pathname: `/edit/${element._id}` }}>
+                      <Button variant="outlined">Edit</Button>
+                    </Link>
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => deletUser(element._id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </main>
+        </TableContainer>
+      </Box>
     </main>
   );
 }

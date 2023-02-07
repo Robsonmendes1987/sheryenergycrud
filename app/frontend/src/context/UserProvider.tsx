@@ -14,16 +14,16 @@ export interface Iusers {
 }
 type userContextType = {
   users: Iusers[];
-  allUsers: (value: number) => Promise<Iusers[]>
-}
+  allUsers: (value: number) => Promise<Iusers[]>;
+};
 
 export const AppContext = createContext({} as userContextType);
 export function UserProvider({ children }: UserContextProps) {
-  const [users, setUsers] = useState<Iusers[]>([]);
+  const [users] = useState<Iusers[]>([]);
 
   const allUsers = async (value: number = 1): Promise<Iusers[]> => {
     const result = await getUser(`&page=${value}&results=8&seed=abc`);
-    return result
+    return result;
   };
 
   useEffect(() => {
@@ -31,6 +31,8 @@ export function UserProvider({ children }: UserContextProps) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ users, allUsers }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ users, allUsers }}>
+      {children}
+    </AppContext.Provider>
   );
 }

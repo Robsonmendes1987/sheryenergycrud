@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FieldValues, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { api } from "../../services/userBackApi";
-import {
-  Box,
-  Button,
-  Container,
-  FormControl,
-  Grid,
-  TextField,
-} from "@mui/material";
+import { Box, Button, FormControl, Grid, TextField } from "@mui/material";
 
 interface IuserBack {
   _id: string;
@@ -18,56 +10,33 @@ interface IuserBack {
   email: string;
   telefone: number;
   cpf: string;
-  address: {
-    city: string;
-    district: string;
-    number: number;
-    street: string;
-    state: string;
-  };
 }
-// type FormValues = {
-//   name: string;
-//   telefone: number;
-//   email: string;
-//   cpf: string;
-//   id: string;
-//   data: string;
-// };
+
 export function EditCliente() {
-  const [list, setDelet] = useState<IuserBack[]>([]);
-  const [create, setCreate] = useState<IuserBack>();
+  const [setCreate] = useState<any>();
   const [state, setState] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
-  const { id } = useParams();
+  const { _id } = useParams();
   const history = useNavigate();
 
-  const getUserBackend = async (_id: string) => {
-    const result = await api.get(`cliente/${_id}`);
+  const getUserBackend = async (id: string | undefined) => {
+    const result = await api.get(`/cliente/${id}`);
 
-    reset(result.data[0]);
+    reset(result.data);
   };
 
-  // const handleSubmitPost = async (data: string) => {
-  //   await api.post("cliente", data);
-  //   setCreate(list.filter((del) => del._id !== data));
-  //   reset();
-  // };
-  const handleSubmitPut = async (
-    _id: string,
-    data: string
-  ): Promise<FormValues> => {
-    await api.put(`/cliente/${_id}`, data);
-    setCreate(create);
-    console.log("TESTE", setCreate);
+  const handleSubmitPut = async (data: any) => {
+    console.log("ESSE E DATA", data);
+    const userPut = await api.patch(`/cliente/${_id}`, data);
+    console.log("SAIU AQUI");
+
+    setCreate(userPut);
+    history("/clients");
   };
-  function handlechange(e: any): void {
-    setState(e.target.value);
-  }
 
   useEffect(() => {
-    getUserBackend("");
-  }, []);
+    getUserBackend(_id);
+  }, [_id]);
 
   return (
     <Box
@@ -87,11 +56,10 @@ export function EditCliente() {
         }}
       >
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <FormControl sx={{ width: "100ch", height: "35ch" }}>
-            <form onSubmit={handleSubmit(handleSubmitPut)}>
+          <form onSubmit={handleSubmit(handleSubmitPut)}>
+            <FormControl sx={{ width: "100ch", height: "35ch" }}>
               <div className="form-control">
                 <div
-                  className="form-control"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -100,7 +68,6 @@ export function EditCliente() {
                 >
                   <Grid
                     className="form-control"
-                    // xs={0}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -108,7 +75,6 @@ export function EditCliente() {
                     }}
                   >
                     <TextField
-                      className="form-control"
                       sx={{ width: "50ch" }}
                       id="standard-name"
                       label="Name"
@@ -116,7 +82,6 @@ export function EditCliente() {
                       variant="filled"
                       {...register("name")}
                       type="text"
-                      onChange={(e) => handlechange(e)}
                     />
                   </Grid>
                 </div>
@@ -138,14 +103,12 @@ export function EditCliente() {
                     }}
                   >
                     <TextField
-                      className="form-control"
                       sx={{ width: "50ch" }}
                       id="outlined-telefone"
                       label="telefone"
                       value={state}
                       variant="filled"
                       {...register("telefone")}
-                      onChange={(e) => handlechange(e)}
                       type="number"
                     />
                   </Grid>
@@ -168,14 +131,12 @@ export function EditCliente() {
                     }}
                   >
                     <TextField
-                      className="form-control"
                       sx={{ width: "50ch" }}
                       id="outlined-email"
                       label="Email"
-                      value={state}
                       variant="filled"
+                      value={state}
                       {...register("email")}
-                      onChange={(e) => handlechange(e)}
                       type="text"
                     />
                   </Grid>
@@ -198,15 +159,13 @@ export function EditCliente() {
                     }}
                   >
                     <TextField
-                      className="form-control"
                       sx={{ width: "50ch" }}
                       id="outlined-cpf"
                       label="Cpf"
                       value={state}
                       variant="filled"
                       {...register("cpf")}
-                      onChange={(e) => handlechange(e)}
-                      type="text"
+                      type="number"
                     />
                   </Grid>
                 </div>
@@ -219,19 +178,26 @@ export function EditCliente() {
                     justifyContent: "center",
                   }}
                 >
-                  <Button
-                    className="form-control"
-                    sx={{ width: "50ch" }}
-                    variant="contained"
-                    type="button"
-                    onClick={() => history("/clients")}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                   >
-                    save changes
-                  </Button>
+                    <Button
+                      sx={{ width: "50ch" }}
+                      variant="contained"
+                      type="submit"
+                      onClick={() => handleSubmitPut}
+                    >
+                      save changes
+                    </Button>
+                  </div>
                 </Grid>
               </div>
-            </form>
-          </FormControl>
+            </FormControl>
+          </form>
         </Grid>
       </Grid>
     </Box>
