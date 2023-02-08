@@ -62,6 +62,7 @@ Para parar os containers, na pasta raiz do projeto execute o comando:
 
 ### Validaçao pagina inicial
 UserName: UserAdmin
+<br />
 PassWord: 123456
 ### Client
 
