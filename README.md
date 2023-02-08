@@ -61,7 +61,8 @@ Para parar os containers, na pasta raiz do projeto execute o comando:
 ## 🔎 Rotas
 
 ### Validaçao pagina inicial
-
+UserName: UserAdmin
+PassWord: 123456
 ### Client
 
 <details>
