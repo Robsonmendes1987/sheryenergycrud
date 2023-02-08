@@ -60,6 +60,8 @@ Para parar os containers, na pasta raiz do projeto execute o comando:
 
 ## 🔎 Rotas
 
+### Validaçao pagina inicial
+
 ### Client
 
 <details>
