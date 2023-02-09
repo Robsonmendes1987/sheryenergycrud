@@ -44,7 +44,7 @@ git clone git@github.com:Robsonmendes1987/sheryenergycrud.git
 Os containers estão mapeados nas seguintes portas:
 
 - frontend_shery: 5173
-- backend_todo: 3002
+- backend_todo: 3003
 - todo-list-db: 27017
 
 Para parar os containers, na pasta raiz do projeto execute o comando:
