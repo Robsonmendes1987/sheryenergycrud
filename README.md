@@ -15,7 +15,7 @@ Essa é uma aplicaçao fullstack de Cadastro de clientes e consumo de APIS, o ob
 - Json Web Tokens
 - Docker
 - Docker Compose
-- React COntext API
+- React Context API
 - Material UI
 - Tailwindcss
 - React Router Dom
