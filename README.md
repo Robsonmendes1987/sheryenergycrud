@@ -15,7 +15,7 @@ Essa é uma aplicaçao fullstack de Cadastro de clientes e consumo de APIS, o ob
 - Json Web Tokens
 - Docker
 - Docker Compose
-- React COntext API
+- React Context API
 - Material UI
 - Tailwindcss
 - React Router Dom
@@ -44,7 +44,7 @@ git clone git@github.com:Robsonmendes1987/sheryenergycrud.git
 Os containers estão mapeados nas seguintes portas:
 
 - frontend_shery: 5173
-- backend_todo: 3002
+- backend_todo: 3003
 - todo-list-db: 27017
 
 Para parar os containers, na pasta raiz do projeto execute o comando:
@@ -59,8 +59,6 @@ Para parar os containers, na pasta raiz do projeto execute o comando:
 <br />
 
 ## 🔎 Rotas
-
-### Client
 
 <details>
   <summary><strong>POST /register</strong></summary>
