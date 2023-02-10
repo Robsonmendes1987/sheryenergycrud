@@ -53,7 +53,9 @@ export function UserBackApi() {
 
   useEffect(() => {
     getUserBackend();
-  }, []);
+    state
+  }, [state]);
+
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -171,9 +173,11 @@ export function UserBackApi() {
                       {element.cpf}
                     </StyledTableCell>
 
-                    <Link to={{ pathname: `/edit/${element._id}` }}>
-                      <Button variant="outlined">Edit</Button>
-                    </Link>
+                    {/* <Link to={{ pathname: `/edit/${element._id}` }}> */}
+                      <Button variant="outlined"
+                      onClick={() => navigate(`/edit/${element._id}`)}
+                      >Edit</Button>
+                    {/* </Link> */}
                     <IconButton
                       aria-label="delete"
                       onClick={() => deletUser(element._id)}

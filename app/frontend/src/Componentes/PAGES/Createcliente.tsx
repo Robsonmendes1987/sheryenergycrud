@@ -1,6 +1,8 @@
 import { Box, Button, FormControl, Grid, TextField } from "@mui/material";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useForm} from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
 import { api } from "../../services/userBackApi";
 
 interface IuserBack {
@@ -14,14 +16,28 @@ interface IuserBack {
 export function CreateCliente() {
   const { register, handleSubmit, reset } = useForm({});
   const [list] = useState<IuserBack[]>([]);
-  const [setCreate] = useState<any>();
+  const [create, setCreate] = useState<any>();
   const [cpf] = useState<any>();
+  const [state, setState] = useState<IuserBack[]>([]);
+  const navigate = useNavigate()
+
+  const getUserBackend = async () => {
+    const result = await api.get("/cliente");
+
+    setState(result.data);
+  };
 
   const handleSubmitPost = async (data: IuserBack) => {
     await api.post("cliente", data);
     setCreate(list.filter((del) => del._id !== data._id));
     reset();
   };
+
+  
+  useEffect(() => {
+    getUserBackend();
+  }, []);
+
 
   return (
     <main

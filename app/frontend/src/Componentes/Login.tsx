@@ -25,7 +25,6 @@ export function Login() {
   const navigate = useNavigate();
 
   const getApi = async ({ userName, password }: Iuser) => {
-    console.log("RETORNA LOGIN", userName, password);
     try {
       const token = await api.post("/login", { userName, password });
       console.log("LOGIN", token.data.token);

@@ -27,10 +27,9 @@ export function EditCliente() {
 
   const handleSubmitPut = async (data: any) => {
     console.log("ESSE E DATA", data);
-    const userPut = await api.patch(`/cliente/${_id}`, data);
+    await api.patch(`/cliente/${_id}`, data);
     console.log("SAIU AQUI");
 
-    setCreate(userPut);
     history("/clients");
   };
 
